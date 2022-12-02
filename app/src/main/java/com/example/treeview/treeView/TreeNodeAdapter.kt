@@ -95,19 +95,6 @@ class TreeNodeAdapter(private var itemList: ArrayList<TreeNode>) : RecyclerView.
         }
     }
 
-    fun getSelect(treeNode: TreeNode, isChecked: Boolean) {
-
-        treeNode.setCheck(isChecked)
-
-        val startPosition = itemList.indexOf(treeNode) + 1
-        val itemCount = selectChildNodes(treeNode, isChecked)
-        notifyItemRangeChanged(startPosition, itemCount)
-
-        if (!treeNode.isRoot()) {
-            selectParentNodes(treeNode)
-        }
-    }
-
     fun selectAll() {
         for ((index, treeNode) in itemList.withIndex()) {
             if (treeNode.isRoot()) {
